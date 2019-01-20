@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>demo</title>
+        <script src="https://unpkg.com/vue"></script> 
+        <link  rel="stylesheet" href="style.css"> 
+    </head>
+    <body>
+        <!-- vue-app是根容器-->
+        <!-- div#name 可以快速创建div-->
+        <div id="vue-app" v-on:mousemove="updateXY">
+            <h1>{{greet('，aaa，')}}</h1><!-- {{}} 方法需要加上()-->
+            <p>Name:{{name}}</p>
+            <a v-bind:href="website">百度</a>
+            <input type="text" v-bind:value="name">
+            <p v-html="websiteTag"></p>
+            <button @click.once="age++">age只加1次</button>
+            <button @click="age++">age加1</button>
+            <button v-on:click="substract">age减1</button><!--这种方法可以不加上()-->
+            <button v-on:dblclick="substract">双击减1</button><!--这种方法可以不加上()-->
+            <p>my age is {{age}}</p>
+            <p>坐标：{{X}},{{Y}} <span v-on:mousemove="stopMoving">stop moving</span></p>
+            <p>坐标：{{X}},{{Y}} <span v-on:mousemove.stop="">stop moving</span></p>
+            <div  v-bind:class="{custcss:true,cssbage:true}">
+                <p>双向绑定</p>
+                <p>
+                    姓名：<input type="text" v-model="name" ><span>{{name}}</span>
+                    年龄：<input type="text" v-model="age"><span>{{age}}</span>
+                    
+                </p> 
+            </div>
+            <p>
+                    <button @click="btnShow">点击显示隐藏(v-if)</button>
+                    <span v-if="isshow">v-if显示</span>
+                    <span v-show="isshow">v-if显示</span>
+            </p>
+            <p>
+                    <div>v-for循环</div>
+                    <div>
+                            <span v-for="(item,index) in users">
+                                    {{index+1}},{{item.name}}-- {{item.age}}
+                             </span>
+                    </div>
+                    <template v-for="(user,index) in users">
+                            <div v-for="(val,key) in user">
+                                <p>
+                                        {{index}}--{{key}}:{{val}}
+                                </p>
+                            </span>
+                    </template>
+            </p>
+            <p>
+                
+            </p>
+        </div>
+        <br>
+
+        <div id="app-component">
+            <xb-component></xb-component>
+        </div>
+    </body>
+
+    <script src="app.js"></script> 
+    <script src="component.js"></script> 
+</html>
